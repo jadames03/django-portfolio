@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'quote_generator',
-    'portfolio_site',
+    'portfolio',
+    'blog',
+    'exchange_rate',
+    'django_sass',
 ]
 
 MIDDLEWARE = [
@@ -120,6 +123,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_DIRS = [
     BASE_DIR / 'quote_generator' / 'static',
+    BASE_DIR / 'exchange_rate' / 'static',
     BASE_DIR / 'movie_booking' / 'static',
 ]
 
