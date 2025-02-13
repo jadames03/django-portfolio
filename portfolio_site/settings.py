@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'portfolio',
     'blog',
     'exchange_rate',
-    'django_sass',
 ]
 
 MIDDLEWARE = [
