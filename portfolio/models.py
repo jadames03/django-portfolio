@@ -1,8 +1,14 @@
 from django.db import models
 
 # Create your models here.
+PROJECT_TYPE = (
+    ('DEV','Development'),
+    ('UI/UX','UI/UX Design'),
+)
+
 class Project(models.Model):
     title = models.CharField(max_length=100)
+    project_type =  models.CharField(max_length=10, choices=PROJECT_TYPE, default='DEV')
     description = models.CharField(max_length=200)
     image = models.ImageField(upload_to='portfolio/images/')
     url = models.URLField(blank=True)
