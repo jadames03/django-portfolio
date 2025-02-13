@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['pg8-ingenious-galilei.circumeo-apps.net']
 
+CSRF_TRUSTED_ORIGINS = ['https://pg8-ingenious-galilei.circumeo-apps.net']
 
 # Application definition
 
