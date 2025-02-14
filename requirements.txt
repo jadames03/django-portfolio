@@ -1,8 +1,8 @@
-asgiref==3.8.1
+asgiref==3.7.2
 backports.zoneinfo==0.2.1
-certifi==2025.1.31
-Django==4.2.19
-pillow==11.1.0
-sqlparse==0.4.3
-typing_extensions==4.12.2
-tzdata==2022.6
+certifi==2023.11.17
+Django==4.2.7
+pillow==10.1.0
+sqlparse==0.4.4
+typing_extensions==4.8.0
+tzdata==2023.3
