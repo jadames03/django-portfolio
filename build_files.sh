@@ -2,13 +2,11 @@
 # Set Python path
 export PYTHONPATH="/vercel/path0:${PYTHONPATH}"
 
-# Install requirements directly with python3.9
+# Install requirements
 python3.9 -m ensurepip
 python3.9 -m pip install --upgrade pip
 python3.9 -m pip install -r requirements.txt
 
-# Create staticfiles directory if it doesn't exist
-mkdir -p staticfiles
-
-# Run collectstatic with clear flag
-python3.9 manage.py collectstatic --noinput --clear 
+# Create staticfiles directory and collect static files
+rm -rf staticfiles/*  # Clean the directory first
+python3.9 manage.py collectstatic --no-input --clear 
