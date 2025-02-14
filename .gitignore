@@ -7,3 +7,9 @@ __pycache__/
 
 # secrets
 .env
+.env.local
+.env.*.local
+
+# static/media
+/staticfiles/
+/media/
