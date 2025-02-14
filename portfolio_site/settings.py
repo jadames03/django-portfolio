@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-@-2awfvpz$u#synq%#6(q+8xk3sbybno683m&mdda30yj*+km@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['pg8-ingenious-galilei.circumeo-apps.net', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['.vercel.app', 'pg8-ingenious-galilei.circumeo-apps.net', '127.0.0.1', 'localhost']
 
 CSRF_TRUSTED_ORIGINS = ['https://pg8-ingenious-galilei.circumeo-apps.net']
 
