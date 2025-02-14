@@ -7,5 +7,8 @@ python3.9 -m ensurepip
 python3.9 -m pip install --upgrade pip
 python3.9 -m pip install -r requirements.txt
 
-# Run collectstatic
-python3.9 manage.py collectstatic --noinput 
+# Create staticfiles directory if it doesn't exist
+mkdir -p staticfiles
+
+# Run collectstatic with clear flag
+python3.9 manage.py collectstatic --noinput --clear 
