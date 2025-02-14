@@ -124,42 +124,49 @@ USE_TZ = True
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_FILE_OVERWRITE = False
+
+# S3 Configuration
+AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
+AWS_S3_ADDRESSING_STYLE = 'virtual'
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_DEFAULT_ACL = None
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
 
 # Additional AWS Settings
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
-AWS_LOCATION = 'static'
+AWS_QUERYSTRING_AUTH = False
 
-# Static files (CSS, JavaScript, Images)
+# Static files configuration
 STATICFILES_DIRS = [
     BASE_DIR / 'portfolio' / 'static',
 ]
-
-# S3 Static files configuration
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# S3 Media files configuration
+# Media files configuration
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# Storage configuration
 STORAGES = {
     # Media file (image) management
     "default": {
         "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
         "OPTIONS": {
             "bucket_name": AWS_STORAGE_BUCKET_NAME,
+            "location": "media",
+            "querystring_auth": False,
         }
     },
     # Static file management
     "staticfiles": {
         "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
         "OPTIONS": {
-            "location": "static",
             "bucket_name": AWS_STORAGE_BUCKET_NAME,
+            "location": "static",
+            "querystring_auth": False,
         },
     }
 }
