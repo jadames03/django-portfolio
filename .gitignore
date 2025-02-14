@@ -1,5 +1,9 @@
-# Python bytecode files
+# python bytecode files
 __pycache__/
 *.py[cod]
 
+# sftp config
 .vscode
+
+# secrets
+.env
