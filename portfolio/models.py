@@ -4,6 +4,7 @@ from django.db import models
 PROJECT_TYPE = (
     ('DEV','Development'),
     ('UI/UX','UI/UX Design'),
+    ('CV','Computer Vision'),
 )
 
 class Project(models.Model):
