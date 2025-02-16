@@ -16,6 +16,7 @@
     <div class="filter-tags">
       <button onclick="dev()" class="tag-btn active">Development</button>
       <button onclick="design()" class="tag-btn">UI/UX Design</button>
+      <button onclick="cv()" class="tag-btn">Computer Vision</button>
     </div>
   </div>
 
@@ -58,6 +59,26 @@
       </div>
       {% endif %}
       {% endfor %}
+    </div>
+
+    <div class="row project-section" id="cvWork" style="display: none;">
+      {% for project in projects %}
+      {% if project.project_type == 'CV' %}
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+        {% if project.url %}
+        <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer" class="card-link">
+        {% endif %}
+          <div class="project-card">
+            <img src="{{ project.image.url }}" class="img-fluid mb-3">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+          </div>
+        {% if project.url %}
+        </a>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% endfor %}
     </div>  
   </div>
 
@@ -69,13 +90,16 @@
 <script>
   var x = document.getElementById("devWork");
   var y = document.getElementById("designWork");
+  var z = document.getElementById("cvWork");
   var btns = document.getElementsByClassName("tag-btn");
 
   function dev() {
     if (x.style.display === "none") {
       y.style.opacity = 0;
+      z.style.opacity = 0;
       setTimeout(function() {
         y.style.display = "none";
+        z.style.display = "none";
         x.style.display = "flex";
         setTimeout(function() {
           x.style.opacity = 1;
@@ -83,14 +107,17 @@
       }, 300);
       btns[0].classList.add("active");
       btns[1].classList.remove("active");
+      btns[2].classList.remove("active");
     }
   }
 
   function design() {
     if (y.style.display === "none") {
       x.style.opacity = 0;
+      z.style.opacity = 0;
       setTimeout(function() {
         x.style.display = "none";
+        z.style.display = "none";
         y.style.display = "flex";
         setTimeout(function() {
           y.style.opacity = 1;
@@ -98,6 +125,25 @@
       }, 300);
       btns[1].classList.add("active");
       btns[0].classList.remove("active");
+      btns[2].classList.remove("active");
+    }
+  }
+
+  function cv() {
+    if (z.style.display === "none") {
+      x.style.opacity = 0;
+      y.style.opacity = 0;
+      setTimeout(function() {
+        x.style.display = "none";
+        y.style.display = "none";
+        z.style.display = "flex";
+        setTimeout(function() {
+          z.style.opacity = 1;
+        }, 50);
+      }, 300);
+      btns[2].classList.add("active");
+      btns[0].classList.remove("active");
+      btns[1].classList.remove("active");
     }
   }
 </script>
